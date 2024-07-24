@@ -1,0 +1,33 @@
+---
+title: "Programa de Prevención y Control del Dengue | 2024"
+format: 
+  dashboard:
+    nav-buttons: [twitter, github, facebook]
+theme: custom.scss
+---
+
+```{r setup}
+library(sf)
+mapview::mapviewOptions(default = TRUE,
+                        basemaps.color.shuffle = FALSE)
+```
+
+
+# [**Probabilidad de Casos Importados**]{style="font-size:2pt"}
+
+::: panel-tabset
+:::
+
+
+# [**Probabilidad de Vector**]{style="font-size:2pt"}
+
+::: panel-tabset
+:::
+
+
+# [**Escenarios Epidemiológicos**]{style="font-size:2pt"}
+
+::: panel-tabset
+
+:::
+
