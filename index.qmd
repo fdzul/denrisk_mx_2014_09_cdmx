@@ -8,8 +8,6 @@ theme: custom.scss
 
 ```{r setup}
 library(sf)
-library(mapgl)
-library(mapboxapi)
 mapview::mapviewOptions(default = TRUE,
                         basemaps.color.shuffle = FALSE)
 ```
@@ -106,7 +104,7 @@ mapview::mapview(pred,
 
 ::: panel-tabset
 
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+
 ```{r escenarios}
 # Step 1. load the prediction ####
 x <- terra::rast("/Users/fdzul/Dropbox/posdoctorado_INSP/proyectos/risk_mzmv/11.output/pred_class_risk.tif")
@@ -137,27 +135,15 @@ mun_high <- mun |>
                                 "Miguel Hidalgo",
                                 "Iztapalapa"))
 
-library(mapgl)
-library(htmlwidgets)
-
-mapgl::mapboxgl(style = mapgl::carto_style("positron"),
-                center = c(-99.127120, 19.393996),
-                zoom = 8) |>
-    mapgl::add_image_source(id = "raster-source", 
-                            data = x,
-                            colors = c("#1f78b4", "#33a02c", "#FFFEC6", "#E4744F","#e31a1c")) |>
-    mapgl::add_raster_layer(id = "raster-layer", 
-                            source = "raster-source",
-                            raster_opacity = 0.5) |>
-    mapgl::add_categorical_legend(
-        legend_title = "Escenarios Epidemuiológicos",
-        values = c("Riesgo Muy Alto", 
-                   "Riesgo Alto",
-                   "Riesgo Medio", 
-                   "Riesgo Bajo", 
-                   "Riesgo Muy Bajo"),
-        colors = c("#e31a1c", "#E4744F","#FFFEC6", "#33a02c", "#1f78b4"),
-        circular_patches = FALSE)
+leaflet::leaflet() |>
+    leaflet::addProviderTiles("CartoDB.Positron") |>
+    leaflet::addRasterImage(x,
+                            colors = rev(c("#e31a1c", 
+                                           "#E4744F",
+                                           "#FFFEC6",
+                                           "#33a02c",
+                                           "#1f78b4")),
+                            opacity = 0.6) 
 ```
 
 :::
