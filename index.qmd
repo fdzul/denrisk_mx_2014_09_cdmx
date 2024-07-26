@@ -61,6 +61,8 @@ mapview::mapview(x,
 # [**Probabilidad de Vector**]{style="font-size:2pt"}
 
 ::: panel-tabset
+
+### [**Área Metropolitana de CDMX**]{style="color:#990000"}
 ```{r presencia_aedes}
 
 
@@ -104,6 +106,8 @@ mapview::mapview(pred,
 
 ::: panel-tabset
 
+### [**Área Metropolitana de CDMX**]{style="color:#990000"}
+
 
 ```{r escenarios}
 # Step 1. load the prediction ####
@@ -145,6 +149,13 @@ leaflet::leaflet() |>
                                            "#1f78b4")),
                             opacity = 0.6) 
 ```
+
+
+[**"Riesgo Muy Alto"**]{style="color:#e31a1c"}
+[**"Riesgo Alto"**]{style="color:#E4744F"}
+[**"Riesgo Medio"**]{style="color:#ffd600"}
+[**"Riesgo Bajo"**]{style="color:#33a02c"}
+[**"Riesgo Muy Bajo"**]{style="color:#1f78b4"}
 
 :::
 

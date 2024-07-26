@@ -27,6 +27,8 @@ mun_high <- mun |>
                                 "Miguel Hidalgo",
                                 "Iztapalapa"))
 
+# mapgl ####
+
 library(mapgl)
 
 mapgl::mapboxgl(style = mapgl::carto_style("positron"),
@@ -52,4 +54,40 @@ mapgl::mapboxgl(style = mapgl::carto_style("positron"),
                                   circular_patches = FALSE)
 
 
+# mapview ####
 
+mapview::mapview(x,
+                 col.regions = rev(c("#e31a1c", 
+                                     "#E4744F",
+                                     "#FFFEC6",
+                                     "#33a02c",
+                                     "#1f78b4")),
+                 alpha.regions = 0.3,
+                 alpha = 0.1,
+                 layer.name = "Escenarios",
+                 trim = TRUE,
+                 label = FALSE,
+                 na.color = NA)
+
+# leaflet ####
+pal <- leaflet::colorFactor(palette =  rev(c("#e31a1c", 
+                                             "#E4744F",
+                                             "#FFFEC6",
+                                             "#33a02c",
+                                             "#1f78b4")),
+                            domain = c("Riesgo Muy Alto", 
+                                       "Riesgo Alto",
+                                       "Riesgo Medio", 
+                                       "Riesgo Bajo", 
+                                       "Riesgo Muy Bajo"))
+
+leaflet::leaflet() |>
+    leaflet::addProviderTiles("CartoDB.Positron") |>
+    leaflet::addRasterImage(x,
+                            colors = rev(c("#e31a1c", 
+                                           "#E4744F",
+                                           "#FFFEC6",
+                                           "#33a02c",
+                                           "#1f78b4")),
+                            opacity = 0.6) 
+   
