@@ -144,7 +144,7 @@ leaflet::leaflet() |>
     leaflet::addRasterImage(x,
                             colors = rev(c("#e31a1c", 
                                            "#E4744F",
-                                           "#FFFEC6",
+                                           "#ffd600",
                                            "#33a02c",
                                            "#1f78b4")),
                             opacity = 0.6) 
